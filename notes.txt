@@ -1,0 +1,42 @@
+# Prise de notes à la bourrin
+
+Lissage et gradient sont indépendants. Gradient plus
+simple à gérer. Commence par le gradient. Histoire 
+que ça se finisse. 
+
+On va utiliser un composant *générique*,
+cela permet de simplifier le test. On peut
+faire un test avec certaines valeurs et on
+pourra extrapôler certaines valeurs. On va
+rendre générique la taille de l'image. On
+se fait une taille d'image en puissance de deux. 
+Rendre générique c'est pas trivial. 
+Composant générique en :
+* Nombre de cases
+* 
+
+Mémoire ligne stocke une ligne de l'image. 
+Les pixels arrivent par 2 cycles d'horloges. 
+
+Je n'utilise que des variables, j'utilise des
+signaux si j'ai besoin de faire sortir du process
+ma valeur.
+Signal c'est du code parallèle difficile de réfléchir
+par rapport à un code séquentiel. Dans
+process on est séquentiel. Entre process on est
+parallèle.
+
+Une mémoire ligne pour le filtre Roberts ??
+Deux mémoires ligne pour l'orientation.
+==> 6 registres. 
+
+Pour débugguer au niveau des variables, on va dans la librairy
+et on fait top level simulate on peut observer les variables c'est plutôt
+crazy !
+
+Bench modèle simplifié de la FPGA acquisition sortie toussa toussa.
+C'est un environnement simplifié de l'environnement, environnmenception.
+
+On touche pas les entrées du test bench, on travaille dedans ce sera a nous
+de modifier les tests. 
+

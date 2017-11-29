@@ -4,35 +4,35 @@ use IEEE.numeric_std.all;
 
 entity filtre_video is
 	generic (
-			size	: integer := 8 	-- taille de la sous-fenetre = 2**size pixels
-			);
-    port (
-			--horloge et reset
-			CLK			: in std_logic; -- clock à 54 MHz
-			RESET 		: in std_logic; -- reset à 0 			
-			-- flux video à 27 MHz
-			-- synchro
-			VGA_X :	in std_logic_vector(10 downto 0); -- compteur pixels
-			VGA_Y :	in std_logic_vector(10 downto 0); -- compteur lignes
-			-- entrée
-			iY : 	in std_logic_vector(7 downto 0); -- flux video entrant : luminance
-			iCb : 	in std_logic_vector(7 downto 0); -- flux video entrant : chrominance bleu
-			iCr : 	in std_logic_vector(7 downto 0); -- flux video entrant : chrominance rouge
-			-- sortie
-			oY	: 	out std_logic_vector(7 downto 0); -- flux video sortant : luminance
-			oCb	: 	out std_logic_vector(7 downto 0); -- flux video sortant : chrominance bleu
-			oCr	: 	out std_logic_vector(7 downto 0); -- flux video sortant : chrominance rouge
-			--switch D2E
-			switch			: in std_logic_vector(17 downto 0);		-- à connecter à DPDT_SW;
-			-- SRAM interfaces
-			address_SRAM 	: out std_logic_vector(17 downto 0); 	-- à connecter à SRAM_ADDR
-			data_SRAM		: inout std_logic_vector(15 downto 0);  -- à connecter à SRAM_DQ
-			write_enable 	: out std_logic; 						-- à connecter à SRAM_WE_N
-			read_enable 	: out std_logic; 						-- à connecter à SRAM_OE_N
-			chip_enable 	: out std_logic;						-- à connecter à SRAM_CE_N 
-			high_mask 		: out std_logic ; 						-- à connecter à SRAM_UB_N
-			low_mask 		: out std_logic 			
-			);			
+		size	: integer := 8 	-- taille de la sous-fenetre = 2**size pixels
+		);
+    	port (
+		--horloge et reset
+		CLK			: in std_logic; -- clock à 54 MHz
+		RESET 		: in std_logic; -- reset à 0 			
+		-- flux video à 27 MHz
+		-- synchro
+		VGA_X :	in std_logic_vector(10 downto 0); -- compteur pixels
+		VGA_Y :	in std_logic_vector(10 downto 0); -- compteur lignes
+		-- entrée
+		iY : 	in std_logic_vector(7 downto 0); -- flux video entrant : luminance
+		iCb : 	in std_logic_vector(7 downto 0); -- flux video entrant : chrominance bleu
+		iCr : 	in std_logic_vector(7 downto 0); -- flux video entrant : chrominance rouge
+		-- sortie
+		oY	: 	out std_logic_vector(7 downto 0); -- flux video sortant : luminance
+		oCb	: 	out std_logic_vector(7 downto 0); -- flux video sortant : chrominance bleu
+		oCr	: 	out std_logic_vector(7 downto 0); -- flux video sortant : chrominance rouge
+		--switch D2E
+		switch			: in std_logic_vector(17 downto 0);		-- à connecter à DPDT_SW;
+		-- SRAM interfaces
+		address_SRAM 	: out std_logic_vector(17 downto 0); 	-- à connecter à SRAM_ADDR
+		data_SRAM		: inout std_logic_vector(15 downto 0);  -- à connecter à SRAM_DQ
+		write_enable 	: out std_logic; 						-- à connecter à SRAM_WE_N
+		read_enable 	: out std_logic; 						-- à connecter à SRAM_OE_N
+		chip_enable 	: out std_logic;						-- à connecter à SRAM_CE_N 
+		high_mask 		: out std_logic ; 						-- à connecter à SRAM_UB_N
+		low_mask 		: out std_logic 			
+		);			
 end entity filtre_video;
 
 
@@ -139,46 +139,22 @@ begin
 			CLK		=> CLK,
 			RESET		=> RESET, 
 			address 	=>
-			data_in		=>
-			data_out	=>
-			read_write	=>
+			data_in		=> sig_Y1,
+			data_out	=> sig_Y2,
+			read_write	=> 
 			);
-	-- u_2: module_SRAM
-	-- port map(
-	-- 		CLK => CLK,
-	-- 		RESET => RESET,
-	-- 		--module top
-	-- 		in_active_area => in_active_area,
-	-- 		X_cpt => X_cpt,
-	-- 		Y_cpt => Y_cpt,
-	-- 		data_in => sig_Y1,
-	-- 		data_out => sig_Y2,
-	-- 		-- SRAM
-	-- 		address_SRAM => address_SRAM,
-	-- 		data_SRAM => data_SRAM,	
-	-- 		write_enable => write_enable,
-	-- 		read_enable => read_enable,
-	-- 		chip_enable => chip_enable,
-	-- 		high_mask => high_mask,
-	-- 		low_mask => low_mask
-	-- 		);
-	-- 
-	-- u_3 : module_diff
-	-- port map(
-	-- 		in_active_area => in_active_area,
-	-- 		iY1 => sig_Y1,
-	-- 		iY2 => sig_Y2,
-	-- 		oY=> sig_Y3,
-	-- 		threshold=> threshold
-	-- );
-	
+
 	gradient : process (clk)
 
-	variable regl: std_logic_vector(10 downto 0);
+
+	variable regl: std_logic_vector(8 downto 0);
+	variable regl2: std_logic_vector(8 downto 0);
+	regl := sig_Y1;
+	regl2 := sig_Y2;	
 	begin
 		if (clk='1' and clk'event) then
-			-- insert code here
-			end if;
+			
+		end if;
 	end process
 
 	--concurent
@@ -196,6 +172,5 @@ begin
 			when others  => oY <= sig_Y3;  -- après diff
 		end case ;
 	end process ; -- process_affichage
-	
 
 end architecture A;	

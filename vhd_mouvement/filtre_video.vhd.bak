@@ -110,14 +110,10 @@ signal sig_Y3			: std_logic_vector(7 downto 0) ;
 --signaux de synchro module fentrage
 signal Y_cpt			: std_logic_vector(10 downto 0);
 signal X_cpt 			: std_logic_vector(10 downto 0);
-signal in_active_area 		: std_logic;
+signal in_active_area 	: std_logic;
 
 --signaux debug
 signal threshold		: std_logic_vector(7 downto 0) ;
-
---signuax intermédiares
-signal address 			:std_logic_vector(7 downto 0);
-signal read_write		:std_logic;
 
 begin
 	u_1: module_fenetrage 
@@ -136,79 +132,33 @@ begin
 			
 	mem1 :memoire_ligne 
 		generic map (
-			address_size => size,
-			word_size => 8 
+			address_size => size
+			word_size => 8
 			)
 		port map (
 			CLK		=> CLK,
 			RESET		=> RESET, 
-			address 	=> address,		--pas sûr
-			data_in		=> sig_Y1,
-			data_out	=> sig_Y2,
-			read_write	=> read_write
-			);
-
-	mem2 :memoire_ligne 
-		generic map (
-			address_size => size,
-			word_size => 18 
-			)
-		port map (
-			CLK		=> CLK,
-			RESET		=> RESET, 
-			address 	=> address,
-			data_in		=> sig_Y2,
-			data_out	=> sig_Y3,
-			read_write	=> read_write
-			);
-	mem3 :memoire_ligne 
-		generic map (
-			address_size => size,
-			word_size => 18 
-			)
-		port map (
-			CLK		=> CLK,
-			RESET		=> RESET, 
-			address 	=> address,
-			data_in		=> sig_Y3,
+			address 	=> 
+			data_in		=> iY,
 			data_out	=> oY,
 			read_write	=> read_write
 			);
 
-
 	gradient : process (clk,in_active_area)
 
-	variable reg1: std_logic_vector(7 downto 0);
-	variable reg2: std_logic_vector(7 downto 0);
-	variable Gx: signed(15 downto 0);
-	variable Gy: signed(15 downto 0);
-	variable G: signed(17 downto 0);
-	variable orientation: std_logic_vector(1 downto 0);
+
+	signal regl: std_logic_vector(7 downto 0);
+	signal regl2: std_logic_vector(7 downto 0);
+	regl <= sig_Y1;
+	regl2 <= sig_Y2;	
 	begin
-	reg1 := sig_Y1;
-	reg2 := sig_Y2;	
-		if (clk='1' and clk'event and in_active_area = '1') then
-			if read_write = '1' then
-				Gx := -signed(sig_Y1) + signed(sig_Y2) -signed(reg1) + signed(reg2); 
-				Gy := signed(sig_Y1) + signed(sig_Y2) -signed(reg1) - signed(reg2);
-				G := Gx*Gx + Gy*Gy;
-
-				if Gx*Gx > 4 * Gy*Gy then
-					orientation := "10";
-				elsif Gy*Gy > 4* Gx*Gx then
-					orientation := "00";
-				elsif Gx*Gy > 0 then
-					orientation := "01";
-				else
-					orientation := "11";
-
-				end if;
+		if (clk='1' and clk'event) then
+			if in_active_area = '1' then
 				
-				G := G&signed(orientation);
 
 			end if;
 		end if;
-	end process;
+	end process
 
 	--concurent
 	threshold <= switch(17 downto 10);

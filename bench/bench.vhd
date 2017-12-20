@@ -15,8 +15,8 @@ architecture A of bench is
 	
 	component filtre_video 				-- Top level de notre code.
 		generic (
-				size	: integer := 512;
-				);
+				size	: integer := 512
+				 );
 		port (
 				CLK		: in std_logic; --clock à 54 Mhz
 				RESET 		: in std_logic; -- reset à 0 
@@ -149,7 +149,7 @@ begin
 	process_simu : process(VGA_X, VGA_Y)
 	variable temp : std_logic_vector(10 downto 0);
 	begin
-		if VGA_X < std_logic_vector(to_unsigned(2**size+5,11)) then
+		if VGA_X < std_logic_vector(to_unsigned(2**+5,11)) then
 			VGA_X <= std_logic_vector(unsigned(VGA_X)+1) after 40 ns;
 		else 	
 			VGA_X <= (others => '0');

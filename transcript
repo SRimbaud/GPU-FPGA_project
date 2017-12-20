@@ -7,81 +7,146 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-# Loading project RIMBAUD_THISSE_VHDL_TP_3A
+vcom -work work -2002 /tp/xph3sic/xph3sic506/TP_3A_Video/vhd_mouvement/filtre_video.vhd
+# Model Technology ModelSim SE-64 vcom 10.2c Compiler 2013.07 Jul 18 2013
+# ** Error: (vcom-7) Failed to open design unit file "/tp/xph3sic/xph3sic506/TP_3A_Video/vhd_mouvement/filtre_video.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# /softl3/modelsim10_2c/modeltech/linux_x86_64/vcom failed.
+# Loading project Projet
 # Compile of filtre_video.vhd was successful.
 # Compile of memoire_ligne.vhd was successful.
 # Compile of module_diff.vhd was successful.
 # Compile of module_fenetrage.vhd was successful.
 # Compile of module_SRAM.vhd was successful.
-# Compile of bench.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
 # Compile of sram.vhd was successful.
-# 7 compiles, 0 failed with no errors. 
-vsim work.bench
-# vsim work.bench 
-# ** Note: (vsim-3812) Design is being optimized...
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading work.bench(a)#1
-add wave -position insertpoint sim:/bench/*
-run
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 0 ns  Iteration: 0  Instance: /bench/memoire
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 1  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 1  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 0 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 10 ns  Iteration: 0  Instance: /bench/memoire
-# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
-#    Time: 10 ns  Iteration: 1  Instance: /bench/memoire
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 890 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 890 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 920 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 920 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 960 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 960 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1 us  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1 us  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1040 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1040 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1080 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1080 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1120 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1120 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1160 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1160 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1200 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1200 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1240 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1240 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1280 ns  Iteration: 2  Instance: /bench/filtre/u_3
-# ** Warning: NUMERIC_STD.">": metavalue detected, returning FALSE
-#    Time: 1280 ns  Iteration: 2  Instance: /bench/filtre/u_3
-quit -sim
+# 7 compiles, 1 failed with 1 error. 
+# Compile of filtre_video.vhd was successful.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 1 failed with 1 error. 
+# Compile of filtre_video.vhd failed with 1 errors.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 2 failed with 2 errors. 
+# Compile of filtre_video.vhd failed with 1 errors.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 2 failed with 2 errors. 
+# Compile of filtre_video.vhd failed with 1 errors.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 2 failed with 2 errors. 
+# Compile of filtre_video.vhd failed with 1 errors.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 2 failed with 2 errors. 
+# Compile of filtre_video.vhd failed with 2 errors.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 2 failed with 3 errors. 
+# Compile of filtre_video.vhd failed with 2 errors.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 2 failed with 3 errors. 
+# Compile of filtre_video.vhd failed with 2 errors.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 2 failed with 3 errors. 
+# Compile of filtre_video.vhd failed with 2 errors.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 2 failed with 3 errors. 
+# Window cannot be closed because the modal window "Warning" is still open.
+# Compile of filtre_video.vhd was successful with warnings.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 1 failed with 1 error. 
+# Compile of filtre_video.vhd was successful with warnings.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 1 failed with 1 error. 
+# Compile of filtre_video.vhd was successful with warnings.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 1 failed with 1 error. 
+# Compile of filtre_video.vhd was successful with warnings.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 1 failed with 1 error. 
+# Compile of filtre_video.vhd was successful with warnings.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 1 failed with 1 error. 
+# Compile of filtre_video.vhd was successful with warnings.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 1 failed with 1 error. 
+# Compile of filtre_video.vhd was successful with warnings.
+# Compile of memoire_ligne.vhd was successful.
+# Compile of module_diff.vhd was successful.
+# Compile of module_fenetrage.vhd was successful.
+# Compile of module_SRAM.vhd was successful.
+# Compile of bench.vhd failed with 1 errors.
+# Compile of sram.vhd was successful.
+# 7 compiles, 1 failed with 1 error. 

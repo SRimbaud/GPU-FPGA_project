@@ -2,8 +2,8 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-library lib_VIDEO;
-use lib_VIDEO.all;
+--library lib_VIDEO;
+--use lib_VIDEO.all;
 
 entity bench is
 
@@ -11,12 +11,12 @@ end entity bench;
 
 architecture A of bench is
 	
-	constant size : integer := 4;			
+	constant size_lig : integer := 4;			-- Nombre de pixels par lignes. C'est un puissance de 2.
 	
-	component filtre_video 
+	component filtre_video 				-- Top level de notre code.
 		generic (
-				size	: integer
-				);
+				size	: integer := 512
+				 );
 		port (
 				CLK		: in std_logic; --clock à 54 Mhz
 				RESET 		: in std_logic; -- reset à 0 
@@ -101,7 +101,7 @@ begin
 
 	filtre : filtre_video
 		generic map(
-		size => size
+		size => size_lig
 		)
 		port map(
 		CLK	=> CLK,
@@ -138,10 +138,10 @@ begin
 		) ;
 
 	
-	switch <= "000" & "00000000000" & "1111";
+	switch <= "000" & "00000000000" & "1111"; --1111  = Nb commutateurs sur FPGA.
 	
 	CLK <= not(CLK) after 10 ns; -- simulation de l'horloge à 54 MHz
-	RESET <= '0', '1' after 165 ns;
+	RESET <= '0', '1' after 15 ns; --ADDED : le reset etait trop long. Par contre il ne doit pas tomber sur le front du signal
 		
 	iCb <= "10000000";
 	iCr <= "10000000";
@@ -186,8 +186,8 @@ begin
 					
 	end process ; -- process_simu
 	
-	iCb <= "10000000";
-	iCr <= "10000000";
+	-- iCb <= "10000000";
+	-- iCr <= "10000000";
 
 end architecture A;
 

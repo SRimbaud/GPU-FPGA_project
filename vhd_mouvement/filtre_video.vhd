@@ -4,7 +4,7 @@ use IEEE.numeric_std.all;
 
 entity filtre_video is
 	generic (
-		size	: integer := 8 	-- taille de la sous-fenetre = 2**size pixels
+		size	: integer := 9 	-- taille de la sous-fenetre = 2**size pixels
 		);
     	port (
 		--horloge et reset
@@ -106,6 +106,9 @@ end component ; -- module_diff
 signal sig_Y1			: std_logic_vector(7 downto 0) ;
 signal sig_Y2			: std_logic_vector(7 downto 0) ;
 signal sig_Y3			: std_logic_vector(7 downto 0) ;
+signal sig_concat : std_logic_vector(17 downto 0);
+signal mem2_vers_mem3 : std_logic_vector(17 downto 0);
+signal sortie_finale : std_logic_vector(17 downto 0);
 
 --signaux de synchro module fentrage
 signal Y_cpt			: std_logic_vector(10 downto 0);
@@ -116,7 +119,7 @@ signal in_active_area 		: std_logic;
 signal threshold		: std_logic_vector(7 downto 0) ;
 
 --signuax intermédiares
-signal address 			:std_logic_vector(7 downto 0);
+signal address 			:std_logic_vector( size -1 downto 0) := (others => '0');
 signal read_write		:std_logic;
 
 begin
@@ -142,8 +145,8 @@ begin
 		port map (
 			CLK		=> CLK,
 			RESET		=> RESET, 
-			address 	=> address,		--pas sûr
-			data_in		=> sig_Y1,
+			address 	=> address,		
+			data_in		=> iY,
 			data_out	=> sig_Y2,
 			read_write	=> read_write
 			);
@@ -157,8 +160,8 @@ begin
 			CLK		=> CLK,
 			RESET		=> RESET, 
 			address 	=> address,
-			data_in		=> sig_Y2,
-			data_out	=> sig_Y3,
+			data_in		=> sig_concat,
+			data_out	=> mem2_vers_mem3,
 			read_write	=> read_write
 			);
 	mem3 :memoire_ligne 
@@ -170,28 +173,46 @@ begin
 			CLK		=> CLK,
 			RESET		=> RESET, 
 			address 	=> address,
-			data_in		=> sig_Y3,
-			data_out	=> oY,
+			data_in		=> mem2_vers_mem3,
+			data_out	=> sortie_finale,
 			read_write	=> read_write
 			);
 
 
 	gradient : process (clk,in_active_area)
 
-	variable reg1: std_logic_vector(7 downto 0);
-	variable reg2: std_logic_vector(7 downto 0);
-	variable Gx: signed(15 downto 0);
-	variable Gy: signed(15 downto 0);
-	variable G: signed(17 downto 0);
-	variable orientation: std_logic_vector(1 downto 0);
+  variable reg2: std_logic_vector(7 downto 0) := (others => '0');
+	variable data_in: std_logic_vector(7 downto 0):= (others => '0');
+	variable Gx: signed(8 downto 0) := (others => '0');
+	variable Gy: signed(8 downto 0) := (others => '0');
+	variable G: signed(17 downto 0) := (others => '0');
+	variable orientation: std_logic_vector(1 downto 0) := (others => '0');
+	
+	
+	variable regA: std_logic_vector(15 downto 0) := (others => '0');
+	variable regB: std_logic_vector(17 downto 0) := (others => '0');
+	-- regB plus grand besoin de son orientation (pixel central)
+	variable regC: std_logic_vector(15 downto 0) := (others => '0');
+	variable regD: std_logic_vector(15 downto 0) := (others => '0');
+	variable regE: std_logic_vector(15 downto 0) := (others => '0');
+	variable regF: std_logic_vector(15 downto 0) := (others => '0');
 	begin
-	reg1 := sig_Y1;
-	reg2 := sig_Y2;	
+	
+	read_write <= '1'; -- amodifier pour faire le calcul tous les deux fronts d'horloge
+	-- Quand il est a 0 on est en trian de modi fla mémoire, on travaille en lisant
+	-- la mémoire que quand il est a Un sinon c'est débile as FUCK
+	--if in_active_area != 1 alors remettre registre a 0
+	
+		
 		if (clk='1' and clk'event and in_active_area = '1') then
+		  --read_write <= not read_write
 			if read_write = '1' then
-				Gx := -signed(sig_Y1) + signed(sig_Y2) -signed(reg1) + signed(reg2); 
-				Gy := signed(sig_Y1) + signed(sig_Y2) -signed(reg1) - signed(reg2);
+			  --reg1 := data_in;
+			  
+				Gy := -signed('0'&iY) + signed('0'&sig_Y2) -signed('0'&data_in) + signed('0'&reg2); 
+				Gx := -signed('0'&iY) - signed('0'&sig_Y2) +signed('0'&data_in) + signed('0'&reg2);
 				G := Gx*Gx + Gy*Gy;
+				address <= std_logic_vector(unsigned(address) + 1) ;
 
 				if Gx*Gx > 4 * Gy*Gy then
 					orientation := "10";
@@ -204,9 +225,63 @@ begin
 
 				end if;
 				
-				G := G&signed(orientation);
+				G := G(17 downto 2)&signed(orientation);
+				sig_concat <= std_logic_vector(G) ;
+				
+				-- Comparaison des pixels selon une direction.
+				-- On travaille avec l'orientation du pixel 5 donc celui dans registre B.
+				
+				if regB(1 downto 0) = "00" and regB(17 downto 2)>= regA and regB(17 downto 2) >= regC then --verticale 6,4
+				 
+				    sig_Y3 <= (others => '1' );--std_logic_vector(G(17 downto 10)) ;
+				    
+				    
+				elsif regB(1 downto 0) = "01" then -- 1 et 9  deuxième bissectrice
+				  if regB(17 downto 2) >= regD and regB(17 downto 2) >= sig_concat(17 downto 2) then
+				    sig_Y3 <= (others => '1' );--std_logic_vector(G(17 downto 2))  ;
+				    end if ;
+				    
+				elsif regB(1 downto 0) = "10" then -- horizontale 8,2
+				  if regB(17 downto 2)>= regE and regB(17 downto 2)>= mem2_vers_mem3(17 downto 2) then
+				    sig_Y3 <= (others => '1' );--std_logic_vector(G(17 downto 2))  ;
+				    end if ;
+				    
+				elsif regB(1 downto 0) = "11" then-- permière bissectrice 7,3
+				  if regB(17 downto 2)>= regF and regB(17 downto 2)>= sortie_finale(17 downto 2) then
+				    sig_Y3 <= (others => '1' ); --std_logic_vector(G(17 downto 2))  ;
+				    end if;
+				    
+				else 
+				  sig_Y3 <=(others => '0')  ;
+				  
+			  end if;
+				       
+				  
+				  
+				
 
 			end if;
+			reg2 := sig_Y2;
+			data_in := iY;
+			--Mise à jour des regitres
+			
+			-- On mets à jour les registres qui stockent les vals + anciennes
+			-- Pour éviter des les perdres
+			regF := regC;
+			regE := regB(17 downto 2);
+			regD := regA;
+			
+			--Registre les plus récents qui stockent signaux qu'on vient de d'émettre.
+			regC := sig_concat(17 downto 2);
+			regA := sortie_finale(17 downto 2);
+			regB := mem2_vers_mem3;
+			
+			
+			
+			
+		
+		else 
+		  oY <= (others => '0');
 		end if;
 	end process;
 

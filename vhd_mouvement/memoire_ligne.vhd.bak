@@ -8,8 +8,8 @@ use IEEE.numeric_std.all;
 
 entity memoire_ligne is
 		generic (
-		address_size : integer ;
-		word_size : integer 
+		address_size : integer := 8;
+		word_size : integer := 8
 		);
 	    port (
 		CLK			: in std_logic;

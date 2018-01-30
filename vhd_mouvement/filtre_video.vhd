@@ -255,7 +255,7 @@ begin
 			read_write	=> read_write
 			);
 
-
+  address_SRAM <= "00"&adr_SRAM;
   lissage_gradient : process (clk)
   
   constant gamma1 : std_logic_vector(2 downto 0) := "001"; -- = 8*(1-gamma)
@@ -265,7 +265,7 @@ begin
   variable reg_direct_v : std_logic_vector(7 downto 0) := (others => '0');
   variable reg_indirect_v : std_logic_vector(7 downto 0) := (others => '0');
   variable compare : std_logic_vector( 7 downto 0) := "11111110" ;--(others => '1');
-  variable compare_SRAM : std_logic_vector( 15 downto 0) := (others => '1');
+  variable compare_SRAM : std_logic_vector( 15 downto 0) := "1111111111111110";--(others => '1');
   variable sens : boolean := false;
   variable intermed : std_logic_vector(10 downto 0) := (others => '0');
   variable intermed_v : std_logic_vector(10 downto 0) := (others => '0');
@@ -302,20 +302,19 @@ begin
 			  
         if sens_SRAM = false then
           adr_SRAM <= std_logic_vector(unsigned(adr_SRAM) + 1) ;
-          address_SRAM(15 downto 0) <= adr_SRAM;
+          
           if adr_SRAM = compare_SRAM then
             sens_SRAM := not sens_SRAM; 
-            adr_SRAM <= not compare_SRAM; 
+            adr_SRAM <= "0000000000000000"; 
           end if;
         else 
           adr_SRAM(15 downto 8) <=  std_logic_vector(unsigned(adr_SRAM(15 downto 8)) + 1) ;
           if adr_SRAM = compare_SRAM then
             sens_SRAM := not sens_SRAM; 
-            adr_SRAM <= not compare_SRAM; 
+            adr_SRAM <= "0000000000000000"; 
           end if;
           if adr_SRAM(15 downto 8) = "11111111" then
-            adr_SRAM(15 downto 8) <= "00000000";
-            adr_SRAM <= std_logic_vector(unsigned(adr_SRAM) + 1) ;  
+            adr_SRAM <= "00000000"&std_logic_vector(unsigned(adr_SRAM(7 downto 0)) + 1) ;  
           end if;      
         end if;
         
@@ -386,7 +385,6 @@ begin
       -- rotation des memoires
       reg_direct := iY;
       reg_direct_v := SRAM1_v ;
-      
       --implémenation SRAM
 
       data_SRAM(7 downto 0) <= SRAM1;

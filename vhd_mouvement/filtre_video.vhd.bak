@@ -139,8 +139,9 @@ signal read_write		:std_logic;
 --signal low_mask		:std_logic := '0';
 signal SRAM1 : std_logic_vector (7 downto 0):= (others => '0');
 signal SRAM2 : std_logic_vector (7 downto 0):= (others => '0');
-signal SRAM1_v : std_logic_vector (7 downto 0):= (others => '0');
+signal SRAM1_v : std_logic_vector (7 downto 0);
 signal SRAM2_v : std_logic_vector (7 downto 0):= (others => '0');
+signal entree_liss_v: std_logic_vector (7 downto 0):= (others => '0');
 
 
 begin
@@ -167,7 +168,7 @@ begin
 			CLK		=> CLK,
 			RESET		=> RESET, 
 			address 	=> address,		
-			data_in		=> data_SRAM(15 downto 8),
+			data_in		=> iY,
 			data_out	=> sig_Y2,
 			read_write	=> read_write
 			);
@@ -255,7 +256,11 @@ begin
 			read_write	=> read_write
 			);
 
-  address_SRAM <= "00"&adr_SRAM;
+  address_SRAM <= "00"&adr_SRAM ;
+  chip_enable <= '0' ;	 
+  high_mask <= '0' ;		  				
+  low_mask 	<= '0' ;	 
+				
   lissage_gradient : process (clk)
   
   constant gamma1 : std_logic_vector(2 downto 0) := "001"; -- = 8*(1-gamma)
@@ -299,7 +304,8 @@ begin
       --read_enable <= (not) read_enable;
       read_write <= not read_write;
 			if read_write = '1' then
-			  
+			  read_enable <= '0' ;
+			  write_enable <= '1' ;
         if sens_SRAM = false then
           adr_SRAM <= std_logic_vector(unsigned(adr_SRAM) + 1) ;
           
@@ -314,8 +320,7 @@ begin
             adr_SRAM <= "0000000000000000"; 
           end if;
           if adr_SRAM(15 downto 8) = "11111111" then
-            adr_SRAM <= "0000000000000000";
-            adr_SRAM <= std_logic_vector(unsigned(adr_SRAM) + 1) ;  
+            adr_SRAM <= "00000000"&std_logic_vector(unsigned(adr_SRAM(7 downto 0)) + 1) ;  
           end if;      
         end if;
         
@@ -326,7 +331,7 @@ begin
         intermed := std_logic_vector((unsigned(gamma1)*unsigned(iY) + unsigned(gamma2)*unsigned(reg_direct))/8);
         entree_mem1 <= intermed(7 downto 0);
         --lissage direct vertical
-        intermed_v := std_logic_vector((unsigned(gamma1)*unsigned(SRAM1_v) + unsigned(gamma2)*unsigned(reg_direct_v))/8);
+        intermed_v := std_logic_vector((unsigned(gamma1)*unsigned(entree_liss_v) + unsigned(gamma2)*unsigned(reg_direct_v))/8);
         entree_mem1_v <= intermed_v(7 downto 0);
         
         address_mem1 <= std_logic_vector(unsigned(address_mem1) + 1) ;
@@ -355,7 +360,7 @@ begin
         intermed := std_logic_vector((unsigned(gamma1)*unsigned(iY) + unsigned(gamma2)*unsigned(reg_direct))/8);
         entree_mem2 <= intermed(7 downto 0);
         --lissage direct vertical
-        intermed_v := std_logic_vector((unsigned(gamma1)*unsigned(SRAM1_v) + unsigned(gamma2)*unsigned(reg_direct_v))/8);
+        intermed_v := std_logic_vector((unsigned(gamma1)*unsigned(entree_liss_v) + unsigned(gamma2)*unsigned(reg_direct_v))/8);
         entree_mem2_v <= intermed_v(7 downto 0);
         
         address_mem2 <= std_logic_vector(unsigned(address_mem2) + 1) ;
@@ -370,6 +375,7 @@ begin
         
         address_mem1 <= std_logic_vector(unsigned(address_mem1) - 1) ;
         
+        reg_indirect := sortie_mem1;
         reg_indirect_v := sortie_mem1_v;
   
         if(address_mem2 = compare ) then
@@ -385,7 +391,7 @@ begin
       
       -- rotation des memoires
       reg_direct := iY;
-      reg_direct_v := SRAM1_v ;
+      reg_direct_v := entree_liss_v;
       --implémenation SRAM
 
       data_SRAM(7 downto 0) <= SRAM1;
@@ -396,8 +402,8 @@ begin
       
       				
 			--implémenattion gradient				  
-					Gy := -signed('0'&SRAM2) + signed('0'&sig_Y2) -signed('0'&data_in) + signed('0'&reg2); 
-					Gx := -signed('0'&SRAM2) - signed('0'&sig_Y2) +signed('0'&data_in) + signed('0'&reg2);
+					Gy := -signed('0'&iY) + signed('0'&sig_Y2) -signed('0'&data_in) + signed('0'&reg2); 
+					Gx := -signed('0'&iY) - signed('0'&sig_Y2) +signed('0'&data_in) + signed('0'&reg2);
 					G := Gx*Gx + Gy*Gy;
 					address <= std_logic_vector(unsigned(address) + 1) ;
 
@@ -418,29 +424,34 @@ begin
 					-- Comparaison des pixels selon une direction.
 					-- On travaille avec l'orientation du pixel 5 donc celui dans registre B.
 					
-					if regB(1 downto 0) = "00" and regB(17 downto 2)>= regA and regB(17 downto 2) >= regC then --verticale 6,4
-					 
-						 sig_Y3 <= (others => '1' );--std_logic_vector(G(17 downto 10)) ;
-						 
+					if regB(1 downto 0) = "00" then
+					   if regB(17 downto 2)> regA and regB(17 downto 2) > regC then --verticale 6,4
+						  sig_Y3 <= (others => '1' );--std_logic_vector(G(17 downto 10)) ;
+						 else 
+					     sig_Y3 <=(others => '0')  ;
+					   end if;
 						 
 					elsif regB(1 downto 0) = "01" then -- 1 et 9  deuxiï¿½me bissectrice
-					  if regB(17 downto 2) >= regD and regB(17 downto 2) >= sig_concat(17 downto 2) then
+					  if regB(17 downto 2) > regD and regB(17 downto 2) > sig_concat(17 downto 2) then
 						 sig_Y3 <= (others => '1' );--std_logic_vector(G(17 downto 2))  ;
-						 end if ;
+						else 
+					   sig_Y3 <=(others => '0')  ;
+						end if ;
 						 
 					elsif regB(1 downto 0) = "10" then -- horizontale 8,2
-					  if regB(17 downto 2)>= regE and regB(17 downto 2)>= mem2_vers_mem3(17 downto 2) then
+					  if regB(17 downto 2)> regE and regB(17 downto 2)> mem2_vers_mem3(17 downto 2) then
 						 sig_Y3 <= (others => '1' );--std_logic_vector(G(17 downto 2))  ;
-						 end if ;
+						else 
+					   sig_Y3 <=(others => '0')  ;
+						end if ;
 						 
 					elsif regB(1 downto 0) = "11" then-- permiï¿½re bissectrice 7,3
-					  if regB(17 downto 2)>= regF and regB(17 downto 2)>= sortie_finale(17 downto 2) then
+					  if regB(17 downto 2)> regF and regB(17 downto 2)> sortie_finale(17 downto 2) then
 						 sig_Y3 <= (others => '1' ); --std_logic_vector(G(17 downto 2))  ;
-						 end if;
-						 
-					else 
-					  sig_Y3 <=(others => '0')  ;
-					  
+						else 
+					   sig_Y3 <=(others => '0')  ;
+						end if;
+
 				  end if;
 							 
 					  
@@ -449,7 +460,7 @@ begin
 
 				--end if; --pas sur peut etre a bouger après le endif de inactive area
 				reg2 := sig_Y2;
-				data_in := SRAM2;
+				data_in := iY;
 				--Mise à jour des regitres
 				
 				-- On mets à jour les registres qui stockent les vals + anciennes
@@ -466,10 +477,10 @@ begin
 				
 			else
 				read_write <= '1';
-				read_enable <= '0';
-				write_enable <= '1';
+				read_enable <= '1';
+				write_enable <= '0';
 				
-				SRAM1_v <= data_SRAM(7 downto 0);
+				entree_liss_v <= data_SRAM(7 downto 0);
 				SRAM2 <= data_SRAM(15 downto 8);
 			end if; --if read_write 
       

@@ -1,16 +1,16 @@
-Fitter Status : Successful - Fri Nov  7 10:48:51 2014
+Fitter Status : Successful - Wed Jan 17 10:15:52 2018
 Quartus II 32-bit Version : 11.1 Build 259 01/25/2012 SP 2 SJ Full Version
 Revision Name : projet_video
 Top-level Entity Name : de2_tv
 Family : Cyclone II
 Device : EP2C35F672C6
 Timing Models : Final
-Total logic elements : 1,592 / 33,216 ( 5 % )
-    Total combinational functions : 1,338 / 33,216 ( 4 % )
-    Dedicated logic registers : 1,019 / 33,216 ( 3 % )
-Total registers : 1019
+Total logic elements : 27,482 / 33,216 ( 83 % )
+    Total combinational functions : 16,394 / 33,216 ( 49 % )
+    Dedicated logic registers : 22,608 / 33,216 ( 68 % )
+Total registers : 22608
 Total pins : 151 / 475 ( 32 % )
 Total virtual pins : 0
-Total memory bits : 28,160 / 483,840 ( 6 % )
-Embedded Multiplier 9-bit elements : 18 / 70 ( 26 % )
+Total memory bits : 24,576 / 483,840 ( 5 % )
+Embedded Multiplier 9-bit elements : 25 / 70 ( 36 % )
 Total PLLs : 1 / 4 ( 25 % )

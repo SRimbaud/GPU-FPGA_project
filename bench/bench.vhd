@@ -11,11 +11,11 @@ end entity bench;
 
 architecture A of bench is
 	
-	constant size_lig : integer := 4;			-- Nombre de pixels par lignes. C'est un puissance de 2.
+	constant size_lig : integer := 8;			-- Nombre de pixels par lignes. C'est un puissance de 2.
 	
 	component filtre_video 				-- Top level de notre code.
 		generic (
-				size	: integer := 512
+				size	: integer := 8
 				 );
 		port (
 				CLK		: in std_logic; --clock à 54 Mhz
@@ -149,40 +149,44 @@ begin
 	process_simu : process(VGA_X, VGA_Y)
 	variable temp : std_logic_vector(10 downto 0);
 	begin
-		if VGA_X < std_logic_vector(to_unsigned(2**+5,11)) then
+		if VGA_X < std_logic_vector(to_unsigned(2**size_lig+5,11)) then
 			VGA_X <= std_logic_vector(unsigned(VGA_X)+1) after 40 ns;
 		else 	
 			VGA_X <= (others => '0');
 		end if;	
 		
-		if VGA_Y < std_logic_vector(to_unsigned(2**size+5,11)) then 
-			VGA_Y <= std_logic_vector(unsigned(VGA_Y)+1) after (2**size+5)*40 ns;
+		if VGA_Y < std_logic_vector(to_unsigned(2**size_lig+5,11)) then 
+			VGA_Y <= std_logic_vector(unsigned(VGA_Y)+1) after (2**size_lig+5)*40 ns;
 		else
 			VGA_Y <= (others => '0');
-		end if;				
+		end if;	
+		
+-- test 0 :
+	   --iY <= (others => '0') ;
+			
 
 -- test 1 :		
 --		iY <= std_logic_vector(unsigned(iY) + 1); 
 
 -- test 2 :
-		temp := std_logic_vector(unsigned(VGA_X) + unsigned(VGA_Y(6 downto 0) & '0'));
-		iY <= temp(7 downto 0);
+		--temp := std_logic_vector(unsigned(VGA_X) + unsigned(VGA_Y(6 downto 0) & '0'));
+		--iY <= temp(7 downto 0);
 		
 -- test 3 :				
 --		temp := std_logic_vector(unsigned(VGA_Y));
 --		iY <= temp(7 downto 0);
 
 -- test 4 :
---		if VGA_Y < "00000000010" or VGA_Y > "0000001100" then
---			iY <= X"10";
---		else	
---			if VGA_X < "00000000010" or VGA_X > "0000001100" then
---				iY <= X"10";
---			else
---				iY <= X"EB";
---			end if;	
---		end if;		
---
+		if VGA_Y < "00000000010" or VGA_Y > "0000001100" then
+			iY <= X"10";
+		else	
+			if VGA_X < "00000000010" or VGA_X > "0000001100" then
+				iY <= X"10";
+			else
+				iY <= X"EB";
+			end if;	
+		end if;		
+
 					
 	end process ; -- process_simu
 	

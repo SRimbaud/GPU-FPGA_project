@@ -1,14 +1,14 @@
-Analysis & Synthesis Status : Successful - Fri Nov  7 10:48:32 2014
+Analysis & Synthesis Status : Successful - Wed Jan 17 10:10:10 2018
 Quartus II 32-bit Version : 11.1 Build 259 01/25/2012 SP 2 SJ Full Version
 Revision Name : projet_video
 Top-level Entity Name : de2_tv
 Family : Cyclone II
-Total logic elements : 1,635
-    Total combinational functions : 1,329
-    Dedicated logic registers : 1,019
-Total registers : 1019
+Total logic elements : 38,257
+    Total combinational functions : 16,385
+    Dedicated logic registers : 22,608
+Total registers : 22608
 Total pins : 151
 Total virtual pins : 0
-Total memory bits : 28,160
-Embedded Multiplier 9-bit elements : 18
+Total memory bits : 24,576
+Embedded Multiplier 9-bit elements : 25
 Total PLLs : 1

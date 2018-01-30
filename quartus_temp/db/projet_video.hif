@@ -22,320 +22,6 @@ VHSM_ON
 -- Start VHDL Libraries --
 -- End VHDL Libraries --
 # entity
-de2_tv
-# storage
-db|projet_video.(0).cnf
-db|projet_video.(0).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|de2_tv.v
-a43147e5735d8fa6a13ba424f7ad4e0
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-|
-}
-# macro_sequence
-
-# end
-# entity
-I2C_AV_Config
-# storage
-db|projet_video.(1).cnf
-db|projet_video.(1).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|I2C_AV_Config.v
-c0777ae2aefbbd5f505aeecca6db47e
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# user_parameter {
-CLK_Freq
-50000000
-PARAMETER_SIGNED_DEC
-DEF
-I2C_Freq
-20000
-PARAMETER_SIGNED_DEC
-DEF
-LUT_SIZE
-51
-PARAMETER_SIGNED_DEC
-DEF
-Dummy_DATA
-0
-PARAMETER_SIGNED_DEC
-DEF
-SET_LIN_L
-1
-PARAMETER_SIGNED_DEC
-DEF
-SET_LIN_R
-2
-PARAMETER_SIGNED_DEC
-DEF
-SET_HEAD_L
-3
-PARAMETER_SIGNED_DEC
-DEF
-SET_HEAD_R
-4
-PARAMETER_SIGNED_DEC
-DEF
-A_PATH_CTRL
-5
-PARAMETER_SIGNED_DEC
-DEF
-D_PATH_CTRL
-6
-PARAMETER_SIGNED_DEC
-DEF
-POWER_ON
-7
-PARAMETER_SIGNED_DEC
-DEF
-SET_FORMAT
-8
-PARAMETER_SIGNED_DEC
-DEF
-SAMPLE_CTRL
-9
-PARAMETER_SIGNED_DEC
-DEF
-SET_ACTIVE
-10
-PARAMETER_SIGNED_DEC
-DEF
-SET_VIDEO
-11
-PARAMETER_SIGNED_DEC
-DEF
-}
-# hierarchies {
-I2C_AV_Config:u1
-}
-# macro_sequence
-
-# end
-# entity
-I2C_Controller
-# storage
-db|projet_video.(2).cnf
-db|projet_video.(2).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|I2C_Controller.v
-3549e4f3b0544bf45de38d870946819
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-I2C_AV_Config:u1|I2C_Controller:u0
-}
-# macro_sequence
-
-# end
-# entity
-TD_Detect
-# storage
-db|projet_video.(3).cnf
-db|projet_video.(3).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|TD_Detect.v
-dcf657f3b7937dec1f56f9fbb6f4716
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-TD_Detect:u2
-}
-# macro_sequence
-
-# end
-# entity
-Reset_Delay
-# storage
-db|projet_video.(4).cnf
-db|projet_video.(4).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Reset_Delay.v
-fbc8121f4477dae498e8d04037d08b7d
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-Reset_Delay:u3
-}
-# macro_sequence
-
-# end
-# entity
-ITU_656_Decoder
-# storage
-db|projet_video.(5).cnf
-db|projet_video.(5).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|ITU_656_Decoder.v
-d21a1eb0ba77a7ab025ec85f62a679a
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-ITU_656_Decoder:u4
-}
-# macro_sequence
-
-# end
-# entity
-DIV
-# storage
-db|projet_video.(6).cnf
-db|projet_video.(6).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|div.v
-d5e4a6f385165ac6b2e88bdd1aa158b
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-DIV:u5
-}
-# macro_sequence
-
-# end
-# entity
 lpm_divide
 # storage
 db|projet_video.(7).cnf
@@ -829,124 +515,6 @@ cout
 }
 # hierarchies {
 DIV:u5|lpm_divide:lpm_divide_component|lpm_divide_d6t:auto_generated|sign_div_unsign_3li:divider|alt_u_div_p1g:divider|add_sub_mkc:add_sub_1
-}
-# macro_sequence
-
-# end
-# entity
-Sdram_Control_4Port
-# storage
-db|projet_video.(13).cnf
-db|projet_video.(13).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|Sdram_Control_4Port.v
-ca439d7d7fd32d76c93c31545f21c06e
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# user_parameter {
-INIT_PER
-24000
-PARAMETER_SIGNED_DEC
-DEF
-REF_PER
-1024
-PARAMETER_SIGNED_DEC
-DEF
-SC_CL
-3
-PARAMETER_SIGNED_DEC
-DEF
-SC_RCD
-3
-PARAMETER_SIGNED_DEC
-DEF
-SC_RRD
-7
-PARAMETER_SIGNED_DEC
-DEF
-SC_PM
-1
-PARAMETER_SIGNED_DEC
-DEF
-SC_BL
-1
-PARAMETER_SIGNED_DEC
-DEF
-SDR_BL
-111
-PARAMETER_UNSIGNED_BIN
-DEF
-SDR_BT
-0
-PARAMETER_UNSIGNED_BIN
-DEF
-SDR_CL
-011
-PARAMETER_UNSIGNED_BIN
-DEF
-}
-# include_file {
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|Sdram_Params.h
-625599f965a889cf34497649a6d284d8
-}
-# hierarchies {
-Sdram_Control_4Port:u6
-}
-# macro_sequence
-DSIZE16      ASIZE23      ASIZE23      DSIZE16      ASIZE23      ASIZE23      DSIZE16      ASIZE23      ASIZE23      DSIZE16      ASIZE23      ASIZE23      DSIZE16      DSIZE16      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      ASIZE23      DSIZE16      
-# end
-# entity
-Sdram_PLL
-# storage
-db|projet_video.(14).cnf
-db|projet_video.(14).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|Sdram_PLL.v
-d55f96191e7ebfe43c714e2cc3a15cc
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-Sdram_Control_4Port:u6|Sdram_PLL:sdram_pll1
 }
 # macro_sequence
 
@@ -2494,289 +2062,6 @@ stratixii_pll.inc
 }
 # hierarchies {
 Sdram_Control_4Port:u6|Sdram_PLL:sdram_pll1|altpll:altpll_component
-}
-# macro_sequence
-
-# end
-# entity
-control_interface
-# storage
-db|projet_video.(16).cnf
-db|projet_video.(16).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|control_interface.v
-fe1ee9d03b875a525e5f2a5c516d5934
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# user_parameter {
-INIT_PER
-24000
-PARAMETER_SIGNED_DEC
-DEF
-REF_PER
-1024
-PARAMETER_SIGNED_DEC
-DEF
-SC_CL
-3
-PARAMETER_SIGNED_DEC
-DEF
-SC_RCD
-3
-PARAMETER_SIGNED_DEC
-DEF
-SC_RRD
-7
-PARAMETER_SIGNED_DEC
-DEF
-SC_PM
-1
-PARAMETER_SIGNED_DEC
-DEF
-SC_BL
-1
-PARAMETER_SIGNED_DEC
-DEF
-SDR_BL
-111
-PARAMETER_UNSIGNED_BIN
-DEF
-SDR_BT
-0
-PARAMETER_UNSIGNED_BIN
-DEF
-SDR_CL
-011
-PARAMETER_UNSIGNED_BIN
-DEF
-}
-# include_file {
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|Sdram_Params.h
-625599f965a889cf34497649a6d284d8
-}
-# hierarchies {
-Sdram_Control_4Port:u6|control_interface:control1
-}
-# macro_sequence
-ASIZE23      ASIZE23      ASIZE23      
-# end
-# entity
-command
-# storage
-db|projet_video.(17).cnf
-db|projet_video.(17).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|command.v
-79aedc0d812a41c9cf37e484a8842ce
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# user_parameter {
-INIT_PER
-24000
-PARAMETER_SIGNED_DEC
-DEF
-REF_PER
-1024
-PARAMETER_SIGNED_DEC
-DEF
-SC_CL
-3
-PARAMETER_SIGNED_DEC
-DEF
-SC_RCD
-3
-PARAMETER_SIGNED_DEC
-DEF
-SC_RRD
-7
-PARAMETER_SIGNED_DEC
-DEF
-SC_PM
-1
-PARAMETER_SIGNED_DEC
-DEF
-SC_BL
-1
-PARAMETER_SIGNED_DEC
-DEF
-SDR_BL
-111
-PARAMETER_UNSIGNED_BIN
-DEF
-SDR_BT
-0
-PARAMETER_UNSIGNED_BIN
-DEF
-SDR_CL
-011
-PARAMETER_UNSIGNED_BIN
-DEF
-}
-# include_file {
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|Sdram_Params.h
-625599f965a889cf34497649a6d284d8
-}
-# hierarchies {
-Sdram_Control_4Port:u6|command:command1
-}
-# macro_sequence
-ASIZE23      ROWSIZE12COLSIZE8BANKSIZE2ROWSTART8          ROWSIZE12ROWSTART8          COLSTART0COLSIZE8COLSTART0BANKSTART20BANKSIZE2BANKSTART20ASIZE23      ASIZE23      
-# end
-# entity
-sdr_data_path
-# storage
-db|projet_video.(18).cnf
-db|projet_video.(18).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|sdr_data_path.v
-b7f56c446c8bba654eef939e5f3773
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# user_parameter {
-INIT_PER
-24000
-PARAMETER_SIGNED_DEC
-DEF
-REF_PER
-1024
-PARAMETER_SIGNED_DEC
-DEF
-SC_CL
-3
-PARAMETER_SIGNED_DEC
-DEF
-SC_RCD
-3
-PARAMETER_SIGNED_DEC
-DEF
-SC_RRD
-7
-PARAMETER_SIGNED_DEC
-DEF
-SC_PM
-1
-PARAMETER_SIGNED_DEC
-DEF
-SC_BL
-1
-PARAMETER_SIGNED_DEC
-DEF
-SDR_BL
-111
-PARAMETER_UNSIGNED_BIN
-DEF
-SDR_BT
-0
-PARAMETER_UNSIGNED_BIN
-DEF
-SDR_CL
-011
-PARAMETER_UNSIGNED_BIN
-DEF
-}
-# include_file {
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|Sdram_Params.h
-625599f965a889cf34497649a6d284d8
-}
-# hierarchies {
-Sdram_Control_4Port:u6|sdr_data_path:data_path1
-}
-# macro_sequence
-DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      
-# end
-# entity
-Sdram_WR_FIFO
-# storage
-db|projet_video.(19).cnf
-db|projet_video.(19).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|Sdram_WR_FIFO.v
-a5473ee7293cf922eb1da5332812b38
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-Sdram_Control_4Port:u6|Sdram_WR_FIFO:write_fifo1
-Sdram_Control_4Port:u6|Sdram_WR_FIFO:write_fifo2
 }
 # macro_sequence
 
@@ -4476,519 +3761,6 @@ Sdram_Control_4Port:u6|Sdram_RD_FIFO:read_fifo2|dcfifo:dcfifo_component|dcfifo_2
 
 # end
 # entity
-Sdram_RD_FIFO
-# storage
-db|projet_video.(36).cnf
-db|projet_video.(36).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|Sdram_Control_4Port|Sdram_RD_FIFO.v
-a58c73e59ecb3716dff296d446ffd4
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-Sdram_Control_4Port:u6|Sdram_RD_FIFO:read_fifo1
-Sdram_Control_4Port:u6|Sdram_RD_FIFO:read_fifo2
-}
-# macro_sequence
-
-# end
-# entity
-YUV422_to_444
-# storage
-db|projet_video.(37).cnf
-db|projet_video.(37).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|YUV422_to_444.v
-1e76529941bfd31b62dee48ec1fe467
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-YUV422_to_444:u7
-}
-# macro_sequence
-
-# end
-# entity
-filtre_video
-# storage
-db|projet_video.(38).cnf
-db|projet_video.(38).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|vhd_mouvement|filtre_video.vhd
-b2d26422e2f5f64eec7984245fca740
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
-size
-8
-PARAMETER_SIGNED_DEC
-DEF
-}
-# hierarchies {
-filtre_video:u_10
-}
-# macro_sequence
-
-# end
-# entity
-module_fenetrage
-# storage
-db|projet_video.(39).cnf
-db|projet_video.(39).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|vhd_mouvement|module_fenetrage.vhd
-b795a94a84e4521db5b86c123b32aaf
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
-size
-8
-PARAMETER_SIGNED_DEC
-USR
- constraint(vga_x)
-10 downto 0
-PARAMETER_STRING
-USR
- constraint(vga_y)
-10 downto 0
-PARAMETER_STRING
-USR
- constraint(iy)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(oy)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(x_cpt)
-10 downto 0
-PARAMETER_STRING
-USR
- constraint(y_cpt)
-10 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-filtre_video:u_10|module_fenetrage:u_1
-}
-# macro_sequence
-
-# end
-# entity
-module_SRAM
-# storage
-db|projet_video.(40).cnf
-db|projet_video.(40).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|vhd_mouvement|module_SRAM.vhd
-75959f122d90585f407ab0832c1252ac
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
- constraint(x_cpt)
-10 downto 0
-PARAMETER_STRING
-USR
- constraint(y_cpt)
-10 downto 0
-PARAMETER_STRING
-USR
- constraint(data_in)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(data_out)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(address_sram)
-17 downto 0
-PARAMETER_STRING
-USR
- constraint(data_sram)
-15 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-filtre_video:u_10|module_SRAM:u_2
-}
-# macro_sequence
-
-# end
-# entity
-module_roberts
-# storage
-db|projet_video.(41).cnf
-db|projet_video.(41).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|vhd_mouvement|module_roberts.vhd
-464b1e5016d57a5c9917789dce9a86bb
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
-address_size
-9
-PARAMETER_SIGNED_DEC
-USR
-word_size
-8
-PARAMETER_SIGNED_DEC
-DEF
-cst_seuil
-0000000010000000
-PARAMETER_UNSIGNED_BIN
-DEF
- constraint(iy)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(oy)
-7 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-filtre_video:u_10|module_roberts:u_3
-}
-# macro_sequence
-
-# end
-# entity
-module_memoire_ligne
-# storage
-db|projet_video.(42).cnf
-db|projet_video.(42).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|vhd_mouvement|memoire_ligne.vhd
-21b5d84f3f4a463e8514e04826c5b7e
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
-address_size
-9
-PARAMETER_SIGNED_DEC
-USR
-word_size
-8
-PARAMETER_SIGNED_DEC
-USR
- constraint(address)
-8 downto 0
-PARAMETER_STRING
-USR
- constraint(data_in)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(data_out)
-7 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-filtre_video:u_10|module_roberts:u_3|module_memoire_ligne:mem_ligne_pix
-filtre_video:u_10|module_lissage:u_4|module_memoire_ligne:mem_ligne_1
-}
-# macro_sequence
-
-# end
-# entity
-module_memoire_ligne
-# storage
-db|projet_video.(43).cnf
-db|projet_video.(43).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|vhd_mouvement|memoire_ligne.vhd
-21b5d84f3f4a463e8514e04826c5b7e
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
-address_size
-9
-PARAMETER_SIGNED_DEC
-USR
-word_size
-16
-PARAMETER_SIGNED_DEC
-USR
- constraint(address)
-8 downto 0
-PARAMETER_STRING
-USR
- constraint(data_in)
-15 downto 0
-PARAMETER_STRING
-USR
- constraint(data_out)
-15 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-filtre_video:u_10|module_roberts:u_3|module_memoire_ligne:mem_ligne_grad1
-filtre_video:u_10|module_roberts:u_3|module_memoire_ligne:mem_ligne_grad2
-}
-# macro_sequence
-
-# end
-# entity
-module_lissage
-# storage
-db|projet_video.(44).cnf
-db|projet_video.(44).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_insensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|vhd_mouvement|module_lissage.vhd
-b39ab55edddc6892e55ef54fa3f37d8b
-5
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-}
-# user_parameter {
-address_size
-9
-PARAMETER_SIGNED_DEC
-USR
-word_size
-8
-PARAMETER_SIGNED_DEC
-USR
-gamma
-110
-PARAMETER_UNSIGNED_BIN
-USR
- constraint(gamma)
-2 downto 0
-PARAMETER_STRING
-USR
- constraint(iy)
-7 downto 0
-PARAMETER_STRING
-USR
- constraint(oy)
-7 downto 0
-PARAMETER_STRING
-USR
-}
-# hierarchies {
-filtre_video:u_10|module_lissage:u_4
-}
-# macro_sequence
-
-# end
-# entity
-YCbCr2RGB
-# storage
-db|projet_video.(45).cnf
-db|projet_video.(45).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|YCbCr2RGB.v
-89c3a927223c3a6d5287401c2735c4
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-YCbCr2RGB:u8
-}
-# macro_sequence
-
-# end
-# entity
-MAC_3
-# storage
-db|projet_video.(46).cnf
-db|projet_video.(46).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|mac_3.v
-325f526359d61ddd67669208e5e744e
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# hierarchies {
-YCbCr2RGB:u8|MAC_3:u0
-YCbCr2RGB:u8|MAC_3:u1
-YCbCr2RGB:u8|MAC_3:u2
-}
-# macro_sequence
-
-# end
-# entity
 altmult_add
 # storage
 db|projet_video.(47).cnf
@@ -6682,92 +5454,6 @@ YCbCr2RGB:u8|MAC_3:u2|altmult_add:ALTMULT_ADD_component|mult_add_4f74:auto_gener
 
 # end
 # entity
-VGA_Ctrl
-# storage
-db|projet_video.(51).cnf
-db|projet_video.(51).cnf
-# logic_option {
-AUTO_RAM_RECOGNITION
-ON
-}
-# case_sensitive
-# source_file
-|tp|xph3sic|xph3sic500|TP_3A_Video|verilog|VGA_Ctrl.v
-dd5e90a6dfee426786985093d4fcd1b6
-8
-# internal_option {
-HDL_INITIAL_FANOUT_LIMIT
-OFF
-AUTO_RESOURCE_SHARING
-OFF
-AUTO_RAM_RECOGNITION
-ON
-AUTO_ROM_RECOGNITION
-ON
-IGNORE_VERILOG_INITIAL_CONSTRUCTS
-OFF
-VERILOG_CONSTANT_LOOP_LIMIT
-5000
-VERILOG_NON_CONSTANT_LOOP_LIMIT
-250
-}
-# user_parameter {
-H_FRONT
-16
-PARAMETER_SIGNED_DEC
-DEF
-H_SYNC
-96
-PARAMETER_SIGNED_DEC
-DEF
-H_BACK
-48
-PARAMETER_SIGNED_DEC
-DEF
-H_ACT
-640
-PARAMETER_SIGNED_DEC
-DEF
-H_BLANK
-160
-PARAMETER_SIGNED_DEC
-DEF
-H_TOTAL
-800
-PARAMETER_SIGNED_DEC
-DEF
-V_FRONT
-11
-PARAMETER_SIGNED_DEC
-DEF
-V_SYNC
-2
-PARAMETER_SIGNED_DEC
-DEF
-V_BACK
-31
-PARAMETER_SIGNED_DEC
-DEF
-V_ACT
-480
-PARAMETER_SIGNED_DEC
-DEF
-V_BLANK
-44
-PARAMETER_SIGNED_DEC
-DEF
-V_TOTAL
-524
-PARAMETER_SIGNED_DEC
-DEF
-}
-# hierarchies {
-VGA_Ctrl:u9
-}
-# macro_sequence
-
-# end
-# entity
 altsyncram
 # storage
 db|projet_video.(52).cnf
@@ -7219,6 +5905,1901 @@ address_a1
 -1
 3
 address_a0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+de2_tv
+# storage
+db|projet_video.(0).cnf
+db|projet_video.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|de2_tv.v
+a43147e5735d8fa6a13ba424f7ad4e0
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+I2C_AV_Config
+# storage
+db|projet_video.(1).cnf
+db|projet_video.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|I2C_AV_Config.v
+c0777ae2aefbbd5f505aeecca6db47e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+CLK_Freq
+50000000
+PARAMETER_SIGNED_DEC
+DEF
+I2C_Freq
+20000
+PARAMETER_SIGNED_DEC
+DEF
+LUT_SIZE
+51
+PARAMETER_SIGNED_DEC
+DEF
+Dummy_DATA
+0
+PARAMETER_SIGNED_DEC
+DEF
+SET_LIN_L
+1
+PARAMETER_SIGNED_DEC
+DEF
+SET_LIN_R
+2
+PARAMETER_SIGNED_DEC
+DEF
+SET_HEAD_L
+3
+PARAMETER_SIGNED_DEC
+DEF
+SET_HEAD_R
+4
+PARAMETER_SIGNED_DEC
+DEF
+A_PATH_CTRL
+5
+PARAMETER_SIGNED_DEC
+DEF
+D_PATH_CTRL
+6
+PARAMETER_SIGNED_DEC
+DEF
+POWER_ON
+7
+PARAMETER_SIGNED_DEC
+DEF
+SET_FORMAT
+8
+PARAMETER_SIGNED_DEC
+DEF
+SAMPLE_CTRL
+9
+PARAMETER_SIGNED_DEC
+DEF
+SET_ACTIVE
+10
+PARAMETER_SIGNED_DEC
+DEF
+SET_VIDEO
+11
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+I2C_AV_Config:u1
+}
+# macro_sequence
+
+# end
+# entity
+I2C_Controller
+# storage
+db|projet_video.(2).cnf
+db|projet_video.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|I2C_Controller.v
+3549e4f3b0544bf45de38d870946819
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+I2C_AV_Config:u1|I2C_Controller:u0
+}
+# macro_sequence
+
+# end
+# entity
+TD_Detect
+# storage
+db|projet_video.(3).cnf
+db|projet_video.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|TD_Detect.v
+dcf657f3b7937dec1f56f9fbb6f4716
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+TD_Detect:u2
+}
+# macro_sequence
+
+# end
+# entity
+Reset_Delay
+# storage
+db|projet_video.(4).cnf
+db|projet_video.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Reset_Delay.v
+fbc8121f4477dae498e8d04037d08b7d
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+Reset_Delay:u3
+}
+# macro_sequence
+
+# end
+# entity
+ITU_656_Decoder
+# storage
+db|projet_video.(5).cnf
+db|projet_video.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|ITU_656_Decoder.v
+d21a1eb0ba77a7ab025ec85f62a679a
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+ITU_656_Decoder:u4
+}
+# macro_sequence
+
+# end
+# entity
+DIV
+# storage
+db|projet_video.(6).cnf
+db|projet_video.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|div.v
+d5e4a6f385165ac6b2e88bdd1aa158b
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+DIV:u5
+}
+# macro_sequence
+
+# end
+# entity
+Sdram_Control_4Port
+# storage
+db|projet_video.(13).cnf
+db|projet_video.(13).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|Sdram_Control_4Port.v
+ca439d7d7fd32d76c93c31545f21c06e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+INIT_PER
+24000
+PARAMETER_SIGNED_DEC
+DEF
+REF_PER
+1024
+PARAMETER_SIGNED_DEC
+DEF
+SC_CL
+3
+PARAMETER_SIGNED_DEC
+DEF
+SC_RCD
+3
+PARAMETER_SIGNED_DEC
+DEF
+SC_RRD
+7
+PARAMETER_SIGNED_DEC
+DEF
+SC_PM
+1
+PARAMETER_SIGNED_DEC
+DEF
+SC_BL
+1
+PARAMETER_SIGNED_DEC
+DEF
+SDR_BL
+111
+PARAMETER_UNSIGNED_BIN
+DEF
+SDR_BT
+0
+PARAMETER_UNSIGNED_BIN
+DEF
+SDR_CL
+011
+PARAMETER_UNSIGNED_BIN
+DEF
+}
+# include_file {
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|Sdram_Params.h
+625599f965a889cf34497649a6d284d8
+}
+# hierarchies {
+Sdram_Control_4Port:u6
+}
+# macro_sequence
+DSIZE16      ASIZE23      ASIZE23      DSIZE16      ASIZE23      ASIZE23      DSIZE16      ASIZE23      ASIZE23      DSIZE16      ASIZE23      ASIZE23      DSIZE16      DSIZE16      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      ASIZE23      DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      ASIZE23      DSIZE16      
+# end
+# entity
+Sdram_PLL
+# storage
+db|projet_video.(14).cnf
+db|projet_video.(14).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|Sdram_PLL.v
+d55f96191e7ebfe43c714e2cc3a15cc
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+Sdram_Control_4Port:u6|Sdram_PLL:sdram_pll1
+}
+# macro_sequence
+
+# end
+# entity
+control_interface
+# storage
+db|projet_video.(16).cnf
+db|projet_video.(16).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|control_interface.v
+fe1ee9d03b875a525e5f2a5c516d5934
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+INIT_PER
+24000
+PARAMETER_SIGNED_DEC
+DEF
+REF_PER
+1024
+PARAMETER_SIGNED_DEC
+DEF
+SC_CL
+3
+PARAMETER_SIGNED_DEC
+DEF
+SC_RCD
+3
+PARAMETER_SIGNED_DEC
+DEF
+SC_RRD
+7
+PARAMETER_SIGNED_DEC
+DEF
+SC_PM
+1
+PARAMETER_SIGNED_DEC
+DEF
+SC_BL
+1
+PARAMETER_SIGNED_DEC
+DEF
+SDR_BL
+111
+PARAMETER_UNSIGNED_BIN
+DEF
+SDR_BT
+0
+PARAMETER_UNSIGNED_BIN
+DEF
+SDR_CL
+011
+PARAMETER_UNSIGNED_BIN
+DEF
+}
+# include_file {
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|Sdram_Params.h
+625599f965a889cf34497649a6d284d8
+}
+# hierarchies {
+Sdram_Control_4Port:u6|control_interface:control1
+}
+# macro_sequence
+ASIZE23      ASIZE23      ASIZE23      
+# end
+# entity
+command
+# storage
+db|projet_video.(17).cnf
+db|projet_video.(17).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|command.v
+79aedc0d812a41c9cf37e484a8842ce
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+INIT_PER
+24000
+PARAMETER_SIGNED_DEC
+DEF
+REF_PER
+1024
+PARAMETER_SIGNED_DEC
+DEF
+SC_CL
+3
+PARAMETER_SIGNED_DEC
+DEF
+SC_RCD
+3
+PARAMETER_SIGNED_DEC
+DEF
+SC_RRD
+7
+PARAMETER_SIGNED_DEC
+DEF
+SC_PM
+1
+PARAMETER_SIGNED_DEC
+DEF
+SC_BL
+1
+PARAMETER_SIGNED_DEC
+DEF
+SDR_BL
+111
+PARAMETER_UNSIGNED_BIN
+DEF
+SDR_BT
+0
+PARAMETER_UNSIGNED_BIN
+DEF
+SDR_CL
+011
+PARAMETER_UNSIGNED_BIN
+DEF
+}
+# include_file {
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|Sdram_Params.h
+625599f965a889cf34497649a6d284d8
+}
+# hierarchies {
+Sdram_Control_4Port:u6|command:command1
+}
+# macro_sequence
+ASIZE23      ROWSIZE12COLSIZE8BANKSIZE2ROWSTART8          ROWSIZE12ROWSTART8          COLSTART0COLSIZE8COLSTART0BANKSTART20BANKSIZE2BANKSTART20ASIZE23      ASIZE23      
+# end
+# entity
+sdr_data_path
+# storage
+db|projet_video.(18).cnf
+db|projet_video.(18).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|sdr_data_path.v
+b7f56c446c8bba654eef939e5f3773
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+INIT_PER
+24000
+PARAMETER_SIGNED_DEC
+DEF
+REF_PER
+1024
+PARAMETER_SIGNED_DEC
+DEF
+SC_CL
+3
+PARAMETER_SIGNED_DEC
+DEF
+SC_RCD
+3
+PARAMETER_SIGNED_DEC
+DEF
+SC_RRD
+7
+PARAMETER_SIGNED_DEC
+DEF
+SC_PM
+1
+PARAMETER_SIGNED_DEC
+DEF
+SC_BL
+1
+PARAMETER_SIGNED_DEC
+DEF
+SDR_BL
+111
+PARAMETER_UNSIGNED_BIN
+DEF
+SDR_BT
+0
+PARAMETER_UNSIGNED_BIN
+DEF
+SDR_CL
+011
+PARAMETER_UNSIGNED_BIN
+DEF
+}
+# include_file {
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|Sdram_Params.h
+625599f965a889cf34497649a6d284d8
+}
+# hierarchies {
+Sdram_Control_4Port:u6|sdr_data_path:data_path1
+}
+# macro_sequence
+DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      DSIZE16      
+# end
+# entity
+Sdram_WR_FIFO
+# storage
+db|projet_video.(19).cnf
+db|projet_video.(19).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|Sdram_WR_FIFO.v
+a5473ee7293cf922eb1da5332812b38
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+Sdram_Control_4Port:u6|Sdram_WR_FIFO:write_fifo1
+Sdram_Control_4Port:u6|Sdram_WR_FIFO:write_fifo2
+}
+# macro_sequence
+
+# end
+# entity
+Sdram_RD_FIFO
+# storage
+db|projet_video.(36).cnf
+db|projet_video.(36).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|Sdram_Control_4Port|Sdram_RD_FIFO.v
+a58c73e59ecb3716dff296d446ffd4
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+Sdram_Control_4Port:u6|Sdram_RD_FIFO:read_fifo1
+Sdram_Control_4Port:u6|Sdram_RD_FIFO:read_fifo2
+}
+# macro_sequence
+
+# end
+# entity
+YUV422_to_444
+# storage
+db|projet_video.(37).cnf
+db|projet_video.(37).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|YUV422_to_444.v
+1e76529941bfd31b62dee48ec1fe467
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+YUV422_to_444:u7
+}
+# macro_sequence
+
+# end
+# entity
+filtre_video
+# storage
+db|projet_video.(38).cnf
+db|projet_video.(38).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|vhd_mouvement|filtre_video.vhd
+ba358a2adbf666945712f308821c0e0
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+size
+9
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+filtre_video:u_10
+}
+# macro_sequence
+
+# end
+# entity
+module_fenetrage
+# storage
+db|projet_video.(39).cnf
+db|projet_video.(39).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|vhd_mouvement|module_fenetrage.vhd
+b795a94a84e4521db5b86c123b32aaf
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+size
+9
+PARAMETER_SIGNED_DEC
+USR
+ constraint(vga_x)
+10 downto 0
+PARAMETER_STRING
+USR
+ constraint(vga_y)
+10 downto 0
+PARAMETER_STRING
+USR
+ constraint(iy)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(oy)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(x_cpt)
+10 downto 0
+PARAMETER_STRING
+USR
+ constraint(y_cpt)
+10 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+filtre_video:u_10|module_fenetrage:u_1
+}
+# macro_sequence
+
+# end
+# entity
+memoire_ligne
+# storage
+db|projet_video.(40).cnf
+db|projet_video.(40).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|vhd_mouvement|memoire_ligne.vhd
+8bdf19ee5ff4f9e3ea369c6dc21ee77a
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+address_size
+9
+PARAMETER_SIGNED_DEC
+USR
+word_size
+8
+PARAMETER_SIGNED_DEC
+USR
+ constraint(address)
+8 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_in)
+7 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_out)
+7 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+filtre_video:u_10|memoire_ligne:mem1
+}
+# macro_sequence
+
+# end
+# entity
+memoire_ligne
+# storage
+db|projet_video.(41).cnf
+db|projet_video.(41).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_insensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|vhd_mouvement|memoire_ligne.vhd
+8bdf19ee5ff4f9e3ea369c6dc21ee77a
+5
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+}
+# user_parameter {
+address_size
+9
+PARAMETER_SIGNED_DEC
+USR
+word_size
+18
+PARAMETER_SIGNED_DEC
+USR
+ constraint(address)
+8 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_in)
+17 downto 0
+PARAMETER_STRING
+USR
+ constraint(data_out)
+17 downto 0
+PARAMETER_STRING
+USR
+}
+# hierarchies {
+filtre_video:u_10|memoire_ligne:mem2
+filtre_video:u_10|memoire_ligne:mem3
+}
+# macro_sequence
+
+# end
+# entity
+YCbCr2RGB
+# storage
+db|projet_video.(42).cnf
+db|projet_video.(42).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|YCbCr2RGB.v
+89c3a927223c3a6d5287401c2735c4
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+YCbCr2RGB:u8
+}
+# macro_sequence
+
+# end
+# entity
+MAC_3
+# storage
+db|projet_video.(43).cnf
+db|projet_video.(43).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|mac_3.v
+325f526359d61ddd67669208e5e744e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+YCbCr2RGB:u8|MAC_3:u0
+YCbCr2RGB:u8|MAC_3:u1
+YCbCr2RGB:u8|MAC_3:u2
+}
+# macro_sequence
+
+# end
+# entity
+VGA_Ctrl
+# storage
+db|projet_video.(44).cnf
+db|projet_video.(44).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+|tp|xph3sic|xph3sic506|Documents|GPU-FPGA_project|verilog|VGA_Ctrl.v
+dd5e90a6dfee426786985093d4fcd1b6
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+H_FRONT
+16
+PARAMETER_SIGNED_DEC
+DEF
+H_SYNC
+96
+PARAMETER_SIGNED_DEC
+DEF
+H_BACK
+48
+PARAMETER_SIGNED_DEC
+DEF
+H_ACT
+640
+PARAMETER_SIGNED_DEC
+DEF
+H_BLANK
+160
+PARAMETER_SIGNED_DEC
+DEF
+H_TOTAL
+800
+PARAMETER_SIGNED_DEC
+DEF
+V_FRONT
+11
+PARAMETER_SIGNED_DEC
+DEF
+V_SYNC
+2
+PARAMETER_SIGNED_DEC
+DEF
+V_BACK
+31
+PARAMETER_SIGNED_DEC
+DEF
+V_ACT
+480
+PARAMETER_SIGNED_DEC
+DEF
+V_BLANK
+44
+PARAMETER_SIGNED_DEC
+DEF
+V_TOTAL
+524
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+VGA_Ctrl:u9
+}
+# macro_sequence
+
+# end
+# entity
+lpm_mult
+# storage
+db|projet_video.(45).cnf
+db|projet_video.(45).cnf
+# case_insensitive
+# source_file
+lpm_mult.tdf
+7356b55ea26745a50a2a0a0d9775f76
+7
+# user_parameter {
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+LPM_WIDTHA
+9
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHB
+9
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHP
+18
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHR
+18
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHS
+1
+PARAMETER_UNKNOWN
+USR
+LPM_REPRESENTATION
+SIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_PIPELINE
+0
+PARAMETER_UNKNOWN
+DEF
+LATENCY
+0
+PARAMETER_UNKNOWN
+DEF
+INPUT_A_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+INPUT_B_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+USE_EAB
+OFF
+PARAMETER_UNKNOWN
+DEF
+MAXIMIZE_SPEED
+5
+PARAMETER_UNKNOWN
+USR
+DEVICE_FAMILY
+Cyclone II
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+APEX20K_TECHNOLOGY_MAPPER
+LUT
+TECH_MAPPER_APEX20K
+USR
+DEDICATED_MULTIPLIER_CIRCUITRY
+AUTO
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+CBXI_PARAMETER
+mult_pus
+PARAMETER_UNKNOWN
+USR
+INPUT_A_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+INPUT_B_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+USE_AHDL_IMPLEMENTATION
+OFF
+PARAMETER_UNKNOWN
+DEF
+}
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result17
+-1
+3
+result16
+-1
+3
+result15
+-1
+3
+result14
+-1
+3
+result13
+-1
+3
+result12
+-1
+3
+result11
+-1
+3
+result10
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab8
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa8
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+}
+# include_file {
+lpm_add_sub.inc
+7d9a33dd39f13aa690c3d0edd88351
+aglobal111.inc
+fab467cd59c56f887ebc21ce2f686f52
+bypassff.inc
+8e8df160d449a63ec15dc86ecf2b373f
+multcore.inc
+13b7e8bee916e23c5f79837e9c670
+altshift.inc
+70fa13aee7d6d160ef20b2de32813a
+}
+# macro_sequence
+
+# end
+# entity
+mult_pus
+# storage
+db|projet_video.(46).cnf
+db|projet_video.(46).cnf
+# case_insensitive
+# source_file
+db|mult_pus.tdf
+513ad4f62941a15bda2de8973e92c73a
+7
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result17
+-1
+3
+result16
+-1
+3
+result15
+-1
+3
+result14
+-1
+3
+result13
+-1
+3
+result12
+-1
+3
+result11
+-1
+3
+result10
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab8
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa8
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa1
+-1
+3
+dataa0
+-1
+3
+}
+# macro_sequence
+
+# end
+# entity
+lpm_mult
+# storage
+db|projet_video.(51).cnf
+db|projet_video.(51).cnf
+# case_insensitive
+# source_file
+lpm_mult.tdf
+7356b55ea26745a50a2a0a0d9775f76
+7
+# user_parameter {
+AUTO_CARRY_CHAINS
+ON
+AUTO_CARRY
+USR
+IGNORE_CARRY_BUFFERS
+OFF
+IGNORE_CARRY
+USR
+AUTO_CASCADE_CHAINS
+ON
+AUTO_CASCADE
+USR
+IGNORE_CASCADE_BUFFERS
+OFF
+IGNORE_CASCADE
+USR
+LPM_WIDTHA
+11
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHB
+9
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHP
+20
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHR
+20
+PARAMETER_UNKNOWN
+USR
+LPM_WIDTHS
+1
+PARAMETER_UNKNOWN
+USR
+LPM_REPRESENTATION
+SIGNED
+PARAMETER_UNKNOWN
+USR
+LPM_PIPELINE
+0
+PARAMETER_UNKNOWN
+DEF
+LATENCY
+0
+PARAMETER_UNKNOWN
+DEF
+INPUT_A_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+INPUT_B_IS_CONSTANT
+NO
+PARAMETER_UNKNOWN
+USR
+USE_EAB
+OFF
+PARAMETER_UNKNOWN
+DEF
+MAXIMIZE_SPEED
+6
+PARAMETER_UNKNOWN
+USR
+DEVICE_FAMILY
+Cyclone II
+PARAMETER_UNKNOWN
+USR
+CARRY_CHAIN
+MANUAL
+PARAMETER_UNKNOWN
+USR
+APEX20K_TECHNOLOGY_MAPPER
+LUT
+TECH_MAPPER_APEX20K
+USR
+DEDICATED_MULTIPLIER_CIRCUITRY
+AUTO
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO
+0
+PARAMETER_UNKNOWN
+DEF
+CBXI_PARAMETER
+mult_svs
+PARAMETER_UNKNOWN
+USR
+INPUT_A_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+INPUT_B_FIXED_VALUE
+Bx
+PARAMETER_UNKNOWN
+DEF
+USE_AHDL_IMPLEMENTATION
+OFF
+PARAMETER_UNKNOWN
+DEF
+}
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result19
+-1
+3
+result18
+-1
+3
+result17
+-1
+3
+result16
+-1
+3
+result15
+-1
+3
+result14
+-1
+3
+result13
+-1
+3
+result12
+-1
+3
+result11
+-1
+3
+result10
+-1
+3
+datab8
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa9
+-1
+3
+dataa8
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa10
+-1
+3
+dataa1
+-1
+1
+dataa0
+-1
+1
+}
+# include_file {
+lpm_add_sub.inc
+7d9a33dd39f13aa690c3d0edd88351
+aglobal111.inc
+fab467cd59c56f887ebc21ce2f686f52
+bypassff.inc
+8e8df160d449a63ec15dc86ecf2b373f
+multcore.inc
+13b7e8bee916e23c5f79837e9c670
+altshift.inc
+70fa13aee7d6d160ef20b2de32813a
+}
+# macro_sequence
+
+# end
+# entity
+mult_svs
+# storage
+db|projet_video.(54).cnf
+db|projet_video.(54).cnf
+# case_insensitive
+# source_file
+db|mult_svs.tdf
+a76a19dbb73d47a8d533b79eed8b4b
+7
+# used_port {
+result9
+-1
+3
+result8
+-1
+3
+result7
+-1
+3
+result6
+-1
+3
+result5
+-1
+3
+result4
+-1
+3
+result3
+-1
+3
+result2
+-1
+3
+result19
+-1
+3
+result18
+-1
+3
+result17
+-1
+3
+result16
+-1
+3
+result15
+-1
+3
+result14
+-1
+3
+result13
+-1
+3
+result12
+-1
+3
+result11
+-1
+3
+result10
+-1
+3
+result1
+-1
+3
+result0
+-1
+3
+datab8
+-1
+3
+datab7
+-1
+3
+datab6
+-1
+3
+datab5
+-1
+3
+datab4
+-1
+3
+datab3
+-1
+3
+datab2
+-1
+3
+datab1
+-1
+3
+datab0
+-1
+3
+dataa9
+-1
+3
+dataa8
+-1
+3
+dataa7
+-1
+3
+dataa6
+-1
+3
+dataa5
+-1
+3
+dataa4
+-1
+3
+dataa3
+-1
+3
+dataa2
+-1
+3
+dataa10
+-1
+3
+dataa1
+-1
+3
+dataa0
 -1
 3
 }

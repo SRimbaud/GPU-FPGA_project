@@ -114,6 +114,10 @@ signal entree_mem1 : std_logic_vector(7 downto 0) ;
 signal entree_mem2 : std_logic_vector(7 downto 0) ;
 signal sortie_mem1 : std_logic_vector(7 downto 0);
 signal sortie_mem2 : std_logic_vector(7 downto 0);
+signal entree_mem1_v : std_logic_vector(7 downto 0);
+signal entree_mem2_v : std_logic_vector(7 downto 0);
+signal sortie_mem1_v : std_logic_vector(7 downto 0);
+signal sortie_mem2_v : std_logic_vector(7 downto 0);
 
 
 --signaux de synchro module fentrage
@@ -128,12 +132,16 @@ signal threshold		: std_logic_vector(7 downto 0) ;
 signal address : std_logic_vector( size -1 downto 0) := (others => '0');
 signal address_mem1 : std_logic_vector( 7 downto 0) := (others => '0');
 signal address_mem2 : std_logic_vector( 7 downto 0) := (others => '1');
+signal adr_SRAM :  std_logic_vector( 15 downto 0) := (others => '0');
 signal read_write		:std_logic;
 --signal chip_enable		:std_logic := '0';
 --signal high_mask		:std_logic := '0';
 --signal low_mask		:std_logic := '0';
 signal SRAM1 : std_logic_vector (7 downto 0):= (others => '0');
 signal SRAM2 : std_logic_vector (7 downto 0):= (others => '0');
+signal SRAM1_v : std_logic_vector (7 downto 0):= (others => '0');
+signal SRAM2_v : std_logic_vector (7 downto 0):= (others => '0');
+
 
 begin
 	u_1: module_fenetrage 
@@ -159,7 +167,7 @@ begin
 			CLK		=> CLK,
 			RESET		=> RESET, 
 			address 	=> address,		
-			data_in		=> iY,
+			data_in		=> data_SRAM(15 downto 8),
 			data_out	=> sig_Y2,
 			read_write	=> read_write
 			);
@@ -218,6 +226,34 @@ begin
 			data_out	=> sortie_mem2,
 			read_write	=> read_write
 			);
+			
+		mem1_lissage_v :memoire_ligne 
+		generic map (
+			address_size => 8,
+			word_size => 8 
+			)
+		port map (
+			CLK		=> CLK,
+			RESET		=> RESET, 
+			address 	=> address_mem1,
+			data_in		=> entree_mem1_v, 
+			data_out	=> sortie_mem1_v,
+			read_write	=> read_write
+			);
+			
+	mem2_lissage_v :memoire_ligne 
+		generic map (
+			address_size => 8,
+			word_size => 8 
+			)
+		port map (
+			CLK		=> CLK,
+			RESET		=> RESET, 
+			address 	=> address_mem2,
+			data_in		=> entree_mem2_v,
+			data_out	=> sortie_mem2_v,
+			read_write	=> read_write
+			);
 
 
   lissage_gradient : process (clk)
@@ -226,10 +262,16 @@ begin
   constant gamma2 : std_logic_vector(2 downto 0) := "111"; -- = 8* gamma = 0.875
   variable reg_direct : std_logic_vector(7 downto 0) := (others => '0');
   variable reg_indirect : std_logic_vector(7 downto 0) := (others => '0');
+  variable reg_direct_v : std_logic_vector(7 downto 0) := (others => '0');
+  variable reg_indirect_v : std_logic_vector(7 downto 0) := (others => '0');
   variable compare : std_logic_vector( 7 downto 0) := "11111110" ;--(others => '1');
+  variable compare_SRAM : std_logic_vector( 15 downto 0) := (others => '1');
   variable sens : boolean := false;
   variable intermed : std_logic_vector(10 downto 0) := (others => '0');
-
+  variable intermed_v : std_logic_vector(10 downto 0) := (others => '0');
+  
+  variable sens_sram : boolean := false;
+  
 
   variable reg2: std_logic_vector(7 downto 0) := (others => '0');
 	variable data_in: std_logic_vector(7 downto 0):= (others => '0');
@@ -253,26 +295,55 @@ begin
   if(RESET = '1') then
     
     if (in_active_area = '1') then
+      --write_enable <= read_enable;
+      --read_enable <= (not) read_enable;
       read_write <= not read_write;
 			if read_write = '1' then
-      --read_enable <= not read_enable;  --outputs, faire des signaux qui correspondent ??
-      --write_enable <= not write_enable;
-    
-      -- lissage horizontal
+			  
+        if sens_SRAM = false then
+          adr_SRAM <= std_logic_vector(unsigned(adr_SRAM) + 1) ;
+          address_SRAM(15 downto 0) <= adr_SRAM;
+          if adr_SRAM = compare_SRAM then
+            sens_SRAM := not sens_SRAM; 
+            adr_SRAM <= not compare_SRAM; 
+          end if;
+        else 
+          adr_SRAM(15 downto 8) <=  std_logic_vector(unsigned(adr_SRAM(15downto 8)) + 1) ;
+          if adr_SRAM = compare_SRAM then
+            sens_SRAM := not sens_SRAM; 
+            adr_SRAM <= not compare_SRAM; 
+          end if;
+          if adr_SRAM(15 downto 8) = "11111111" then
+            adr_SRAM(15 downto 8) <= "00000000";
+            adr_SRAM <= std_logic_vector(unsigned(adr_SRAM) + 1) ;  
+          end if;      
+        end if;
+        
+      -- lissage 
       if (sens = false) then
 
-        --lissage direct
+        --lissage direct horizontal
         intermed := std_logic_vector((unsigned(gamma1)*unsigned(iY) + unsigned(gamma2)*unsigned(reg_direct))/8);
         entree_mem1 <= intermed(7 downto 0);
+        --lissage direct vertical
+        intermed_v := std_logic_vector((unsigned(gamma1)*unsigned(SRAM1_v) + unsigned(gamma2)*unsigned(reg_direct_v))/8);
+        entree_mem1_v <= intermed_v(7 downto 0);
+        
         address_mem1 <= std_logic_vector(unsigned(address_mem1) + 1) ;
-        --lissage indirect
+        
+        
+        --lissage indirect horizontal
         intermed := std_logic_vector((unsigned(gamma1)*unsigned(sortie_mem2) + unsigned(gamma2)*unsigned(reg_indirect))/8);
         SRAM1 <= intermed(7 downto 0);   
+        --lissage indirect vertical
+        intermed_v := std_logic_vector((unsigned(gamma1)*unsigned(sortie_mem2_v) + unsigned(gamma2)*unsigned(reg_indirect_v))/8);
+        SRAM1_v <= intermed_v(7 downto 0);
+        
         address_mem2 <= std_logic_vector(unsigned(address_mem2) - 1) ;
         
         reg_indirect := sortie_mem2;
-        entree_mem2 <= (others => '0') ;
-        sortie_mem1 <= (others => '0') ;
+        reg_indirect_v := sortie_mem2_v;
+    
         if(address_mem1 =  compare ) then
           sens := not sens;
         end if;
@@ -280,34 +351,54 @@ begin
     
       elsif (sens = true) then
 
-        --lissage direct
+        --lissage direct horizontal
         intermed := std_logic_vector((unsigned(gamma1)*unsigned(iY) + unsigned(gamma2)*unsigned(reg_direct))/8);
         entree_mem2 <= intermed(7 downto 0);
+        --lissage direct vertical
+        intermed_v := std_logic_vector((unsigned(gamma1)*unsigned(SRAM1_v) + unsigned(gamma2)*unsigned(reg_direct_v))/8);
+        entree_mem2_v <= intermed_v(7 downto 0);
+        
         address_mem2 <= std_logic_vector(unsigned(address_mem2) + 1) ;
-        --lissage indirect
+        
+        
+        --lissage indirect horizontal
         intermed := std_logic_vector((unsigned(gamma1)*unsigned(sortie_mem1) + unsigned(gamma2)*unsigned(reg_indirect))/8);
         SRAM1 <= intermed(7 downto 0);
+        --lissage indirect vertical
+        intermed_v := std_logic_vector((unsigned(gamma1)*unsigned(sortie_mem1_v) + unsigned(gamma2)*unsigned(reg_indirect_v))/8);
+        SRAM1_v <= intermed_v(7 downto 0);
+        
         address_mem1 <= std_logic_vector(unsigned(address_mem1) - 1) ;
         
-        reg_indirect := sortie_mem1;
-        entree_mem1 <= (others => '0') ;
-        sortie_mem2 <= (others => '0') ;
+        reg_indirect_v := sortie_mem1_v;
+  
         if(address_mem2 = compare ) then
           sens := not sens;
         end if;
                       
       end if;
-      --SRAM1 et SRAM2 transvasées dans data_SRAM (poids faibles et forts)
+      --SRAM1 et SRAM2 transvasées dans data_SRAM (poids faibles et forts)      
+      
+      
+
+      
       
       -- rotation des memoires
       reg_direct := iY;
+      reg_direct_v := SRAM1_v ;
+      
+      --implémenation SRAM
+
+      data_SRAM(7 downto 0) <= SRAM1;
+      data_SRAM(15 downto 8) <= SRAM1_v;
+    
       
       
       
       				
-							  
-					Gy := -signed('0'&iY) + signed('0'&sig_Y2) -signed('0'&data_in) + signed('0'&reg2); 
-					Gx := -signed('0'&iY) - signed('0'&sig_Y2) +signed('0'&data_in) + signed('0'&reg2);
+			--implémenattion gradient				  
+					Gy := -signed('0'&SRAM2) + signed('0'&sig_Y2) -signed('0'&data_in) + signed('0'&reg2); 
+					Gx := -signed('0'&SRAM2) - signed('0'&sig_Y2) +signed('0'&data_in) + signed('0'&reg2);
 					G := Gx*Gx + Gy*Gy;
 					address <= std_logic_vector(unsigned(address) + 1) ;
 
@@ -359,11 +450,11 @@ begin
 
 				--end if; --pas sur peut etre a bouger après le endif de inactive area
 				reg2 := sig_Y2;
-				data_in := iY;
-				--Mise ï¿½ jour des regitres
+				data_in := SRAM2;
+				--Mise à jour des regitres
 				
-				-- On mets ï¿½ jour les registres qui stockent les vals + anciennes
-				-- Pour ï¿½viter des les perdres
+				-- On mets à jour les registres qui stockent les vals + anciennes
+				-- Pour éviter des les perdres
 				regF := regC;
 				regE := regB(17 downto 2);
 				regD := regA;
@@ -376,27 +467,34 @@ begin
 				
 			else
 				read_write <= '1';
-			end if;
+				read_enable <= '0';
+				write_enable <= '1';
+				
+				SRAM1_v <= data_SRAM(7 downto 0);
+				SRAM2 <= data_SRAM(15 downto 8);
+			end if; --if read_write 
       
     else
 
     compare := "11111110" ;--(others => '1');
     intermed := (others => '0');
-
-
-
+    intermed_v := (others => '0');
 	  orientation := (others => '0');
 		
       
       
-    end if;
+    end if; --if inactive_area
     
   else
     reg_direct := (others => '0');
     reg_indirect := (others => '0');
+    reg_direct_v := (others => '0');
+    reg_indirect_v := (others => '0');
     compare := "11111110" ;--(others => '1');
     sens := false;
+    sens_SRAM := false;
     intermed := (others => '0');
+    intermed_v := (others => '0');
 
     reg2 := (others => '0');
 	  data_in := (others => '0');
@@ -414,8 +512,8 @@ begin
 
 
  
-  end if;
-  end if;
+  end if; --if reset
+  end if; -- if clk
   
   end process;
 
